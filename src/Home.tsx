@@ -2,8 +2,8 @@ import GitHubIcon from "@mui/icons-material/GitHub";
 import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useState } from "react";
-import Professional from "./components/Professional";
-import Personal from "./components/Personal";
+import Professional from "./components/projects/Professional";
+import Personal from "./components/projects/Personal";
 const Home = () => {
     const [projectView, setProjectView] = useState<"personal" | "work">("work");
 
@@ -34,7 +34,8 @@ const Home = () => {
                         I am a full-stack developer based in Montreal, QC,
                         Canada.
                         <br /> I have experience with <b>React</b> as front and{" "}
-                        <b>Java</b>, <b>Node</b>, and <b> Python</b> as back.
+                        <b>Java Spring</b>, <b>Node Express</b>, and{" "}
+                        <b> Python Flask</b> as back.
                     </p>
                 </div>
             </section>
@@ -48,7 +49,7 @@ const Home = () => {
                         <ul className="h-full flex flex-col gap-1 text-center p-3 justify-around">
                             <li>HTML, CSS, JS</li>
                             <li>React, Next</li>
-                            <li>Tailwind, BootStrap</li>
+                            <li>Tailwind</li>
                         </ul>
                     </div>
                     <div className="border rounded-lg min-w-40 flex flex-col">
@@ -57,18 +58,29 @@ const Home = () => {
                         </h3>
                         <ul className="h-full flex flex-col gap-1 text-center p-3 justify-around">
                             <li>Java, Spring</li>
-                            <li>Node</li>
-                            <li>Python</li>
+                            <li>Node, Express</li>
+                            <li>Python Flask</li>
                         </ul>
                     </div>
+
                     <div className="border rounded-lg min-w-40 flex flex-col">
                         <h3 className="text-center font-bold py-1 text-xl bg-neutral-600 text-white rounded-t-lg">
                             Databases
                         </h3>
                         <ul className="h-full flex flex-col gap-1 text-center p-3 justify-around">
-                            <li>MySQL</li>
-                            <li>SQL</li>
-                            <li>MongoDB</li>
+                            <li>SQL, MySQL</li>
+                            <li>NoSQL, MongoDB</li>
+                        </ul>
+                    </div>
+                    <div className="border rounded-lg min-w-40 flex flex-col">
+                        <h3 className="text-center font-bold py-1 text-xl bg-neutral-600 text-white rounded-t-lg">
+                            Softwares
+                        </h3>
+                        <ul className="h-full flex flex-col gap-1 text-center p-3 justify-around">
+                            <li>Git, Github</li>
+                            <li>Docker</li>
+                            <li>Postman</li>
+                            <li>Linux</li>
                         </ul>
                     </div>
                     {/* <div className="border rounded-lg min-w-40 flex flex-col">
