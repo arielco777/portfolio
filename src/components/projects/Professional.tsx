@@ -115,8 +115,8 @@ const Professional = () => {
                                 </a>
                             </CarouselItem>
                         </CarouselContent>
-                        <CarouselPrevious className="lg:visible invisible text-white hover:text-neutral-400" />
-                        <CarouselNext className="lg:visible invisible text-white hover:text-neutral-400" />
+                        <CarouselPrevious />
+                        <CarouselNext />
                     </Carousel>
                 </div>
                 <div className="lg:w-1/3 h-max  rounded-lg lg:text-xl p-10 lg:p-20 mt-4 text-center">

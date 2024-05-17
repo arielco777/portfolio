@@ -4,6 +4,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import { useState } from "react";
 import Professional from "./components/projects/Professional";
 import Personal from "./components/projects/Personal";
+import { Email } from "@mui/icons-material";
 const Home = () => {
     const [projectView, setProjectView] = useState<"personal" | "work">("work");
 
@@ -125,7 +126,10 @@ const Home = () => {
                     </h3>
                     <div>
                         <div className="flex w-full lg:justify-around justify-center gap-10 mt-4">
-                            <div className="hover:text-neutral-400 w-6 h-6 flex justify-center items-center rounded">
+                            <div className="group relative hover:text-neutral-400 w-6 h-6 flex justify-center items-center rounded ">
+                                <div className="absolute -top-8 bg-neutral-100 text-black rounded-md px-1 invisible group-hover:visible">
+                                    Github
+                                </div>
                                 <a
                                     className="-mt-1"
                                     href="https://github.com/arielco777"
@@ -134,16 +138,10 @@ const Home = () => {
                                     <GitHubIcon fontSize="large" />
                                 </a>
                             </div>
-                            <div className="hover:text-neutral-400 w-6 h-6 flex justify-center items-center rounded">
-                                <a
-                                    className="-mt-1"
-                                    href="CV_Ariel-Cohen.pdf"
-                                    target="_blank"
-                                >
-                                    <PictureAsPdfIcon fontSize="large" />
-                                </a>
-                            </div>
-                            <div className="hover:text-neutral-400 w-6 h-6 flex justify-center items-center rounded">
+                            <div className="group relative hover:text-neutral-400 w-6 h-6 flex justify-center items-center rounded">
+                                <div className="absolute -top-8 bg-neutral-100 text-black rounded-md px-1 invisible group-hover:visible w-max">
+                                    Linkedin
+                                </div>
                                 <a
                                     className="-mt-1"
                                     href="https://www.linkedin.com/in/ariel-martin-cohen/"
@@ -152,9 +150,35 @@ const Home = () => {
                                     <LinkedInIcon fontSize="large" />
                                 </a>
                             </div>
+                            <div className="group relative hover:text-neutral-400 w-6 h-6 flex justify-center items-center rounded">
+                                <div className="absolute -top-8 bg-neutral-100 text-black rounded-md px-1 invisible group-hover:visible w-max">
+                                    Download CV
+                                </div>
+                                <a
+                                    className="-mt-1"
+                                    href="CV_Ariel-Cohen.pdf"
+                                    target="_blank"
+                                >
+                                    <PictureAsPdfIcon fontSize="large" />
+                                </a>
+                            </div>
+
+                            <div className="group relative hover:text-neutral-400 w-6 h-6 flex justify-center items-center rounded">
+                                <div className="absolute -top-8 bg-neutral-100 text-black rounded-md px-1 invisible group-hover:visible w-max">
+                                    Email
+                                </div>
+                                <a
+                                    className="-mt-1"
+                                    href="https://www.linkedin.com/in/ariel-martin-cohen/"
+                                    target="_blank"
+                                >
+                                    <Email fontSize="large" />
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <p className="text-center mt-4">
+                    <p className="text-center text-sm mt-4">
+                        Built by{" "}
                         <span className="text-blue-400 font-bold">
                             Ariel Cohen
                         </span>
