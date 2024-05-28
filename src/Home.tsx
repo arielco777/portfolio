@@ -10,7 +10,7 @@ const Home = () => {
 
     return (
         <div className="flex flex-col items-center">
-            <section className="py-10 lg:py-32 w-full flex flex-col lg:flex-row lg:justify-around justify-center bg-black text-white">
+            <section className="py-10 lg:py-32 w-full flex flex-col lg:flex-row lg:justify-around justify-center lg:px-52 bg-black text-white">
                 <h1 className="text-4xl lg:text-7xl flex flex-col my-auto lg:text-start text-center">
                     <span className="">Hello, I am </span>{" "}
                     <span className="">
@@ -38,6 +38,11 @@ const Home = () => {
                         <b>Java Spring</b>, <b>Node Express</b>, and{" "}
                         <b> Python Flask</b> as back.
                     </p>
+                    <p className="mt-5">
+                        I also enjoy building video games in <b>Unity</b> but
+                        that is for another portfolio.
+                    </p>
+                    <p className="text-neutral-400">(work in progress)</p>
                 </div>
             </section>
             <section id="technologies" className="py-10 w-full px-4 border-t">

@@ -25,7 +25,7 @@ const Professional = () => {
                         </a>
                     </p>
                 </div>
-                <div className="lg:w-1/2 mt-10">
+                <div className="lg:w-1/2 mt-10 flex flex-col items-center">
                     <h3 className="text-center text-4xl mb-10 hover:underline text-blue-600">
                         <a href="https://www.tradeen.ai/" target="_blank">
                             tradeeN.ai
@@ -77,7 +77,7 @@ const Professional = () => {
                 </div>
             </section>
             <section className="w-full lg:flex justify-around items-center lg:px-40 gap- py-6 lg:py-10 ">
-                <div className="lg:w-1/2 lg:mt-10">
+                <div className="lg:w-1/2 lg:mt-10 flex flex-col items-center">
                     <h3 className="text-center text-4xl mb-10 hover:underline text-blue-600">
                         <a href="http://www.hadaly.ca" target="_blank">
                             Hadaly.ca
