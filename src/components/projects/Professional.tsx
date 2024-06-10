@@ -124,7 +124,7 @@ const Professional = () => {
                         <b>Hadaly</b> is an automated risk detection app to
                         perfom due-diligence report for M&A's. It includes a
                         file system for the data room, team and task management,
-                        and dashboards. (All information shown are for demo
+                        and dashboards. (All information shown is for demo
                         purposes)
                     </p>
                     <p className="pt-3 text-blue-600 hover:underline w-max mx-auto">
