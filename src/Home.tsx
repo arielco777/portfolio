@@ -5,6 +5,9 @@ import { useState } from "react";
 import Professional from "./components/projects/Professional";
 import Personal from "./components/projects/Personal";
 import { Email } from "@mui/icons-material";
+
+const resumeLink = "Ariel_Cohen-Resume.pdf";
+
 const Home = () => {
     const [projectView, setProjectView] = useState<"personal" | "work">("work");
 
@@ -157,11 +160,11 @@ const Home = () => {
                             </div>
                             <div className="group relative hover:text-neutral-400 w-6 h-6 flex justify-center items-center rounded">
                                 <div className="absolute -top-8 bg-neutral-100 text-black rounded-md px-1 invisible group-hover:visible w-max">
-                                    Download CV
+                                    Resume
                                 </div>
                                 <a
                                     className="-mt-1"
-                                    href="CV_Ariel-Cohen.pdf"
+                                    href={resumeLink}
                                     target="_blank"
                                 >
                                     <PictureAsPdfIcon fontSize="large" />
