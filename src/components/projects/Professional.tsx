@@ -10,8 +10,8 @@ import {
 const Professional = () => {
     return (
         <>
-            <section className="relative flex flex-col-reverse lg:flex-row justify-around w-full lg:px-40 gap-10 bg-neutral-200 lg:py-10 pb-6 items-center">
-                <div className="lg:w-1/3 h-max lg:text-xl pb-6 lg:p-20 mt-4 text-center">
+            <section className="relative flex w-full flex-col-reverse items-center justify-around gap-10 bg-neutral-200 pb-6 lg:flex-row lg:px-40 lg:py-10">
+                <div className="mt-4 h-max pb-6 text-center lg:w-1/3 lg:p-20 lg:text-xl">
                     <p>
                         An easy to use trading app with a no-code strategy
                         creation for Entries and Exits. Includes a drag and drop
@@ -19,16 +19,16 @@ const Professional = () => {
                         questions, a save system, and an easy to use interface
                         for beginners.
                     </p>
-                    <p className="text-blue-600 hover:underline mt-4">
+                    <p className="mt-4 text-blue-600 hover:underline">
                         <a href="https://www.tradeen.ai/" target="_blank">
-                            tradeen.Ai
+                            tradeen.ai
                         </a>
                     </p>
                 </div>
-                <div className="lg:w-1/2 mt-10 flex flex-col items-center">
-                    <h3 className="text-center text-4xl mb-10 hover:underline text-blue-600">
+                <div className="mt-10 flex flex-col items-center lg:w-1/2">
+                    <h3 className="mb-10 text-center text-4xl text-blue-600 hover:underline">
                         <a href="https://www.tradeen.ai/" target="_blank">
-                            tradeeN.ai
+                            TradeeN
                         </a>
                     </h3>
                     <div className="">
@@ -70,15 +70,15 @@ const Professional = () => {
                                     </a>
                                 </CarouselItem>
                             </CarouselContent>
-                            <CarouselPrevious className="lg:visible invisible " />
-                            <CarouselNext className="lg:visible invisible" />
+                            <CarouselPrevious className="invisible lg:visible" />
+                            <CarouselNext className="invisible lg:visible" />
                         </Carousel>
                     </div>
                 </div>
             </section>
-            <section className="w-full lg:flex justify-around items-center lg:px-40 gap- py-6 lg:py-10 ">
-                <div className="lg:w-1/2 lg:mt-10 flex flex-col items-center">
-                    <h3 className="text-center text-4xl mb-10 hover:underline text-blue-600">
+            <section className="gap- w-full items-center justify-around py-6 lg:flex lg:px-40 lg:py-10">
+                <div className="flex flex-col items-center lg:mt-10 lg:w-1/2">
+                    <h3 className="mb-10 text-center text-4xl text-blue-600 hover:underline">
                         <a href="http://www.hadaly.ca" target="_blank">
                             Hadaly.ca
                         </a>
@@ -119,15 +119,15 @@ const Professional = () => {
                         <CarouselNext />
                     </Carousel>
                 </div>
-                <div className="lg:w-1/3 h-max  rounded-lg lg:text-xl p-10 lg:p-20 mt-4 text-center">
+                <div className="mt-4 h-max rounded-lg p-10 text-center lg:w-1/3 lg:p-20 lg:text-xl">
                     <p>
-                        <b>Hadaly</b> is an automated risk detection app to
-                        perfom due-diligence report for M&A's. It includes a
-                        file system for the data room, team and task management,
-                        and dashboards. (All information shown is for demo
-                        purposes)
+                        <b>Hadaly</b>'s main product is an automated risk
+                        detection app to perfom due-diligence report for M&A's.
+                        It includes a file system for the data room, team and
+                        task management, and dashboards. (All information shown
+                        is for demo purposes)
                     </p>
-                    <p className="pt-3 text-blue-600 hover:underline w-max mx-auto">
+                    <p className="mx-auto w-max pt-3 text-blue-600 hover:underline">
                         <a href="https://www.hadaly.ca" target="_blank">
                             Hadaly.ca
                         </a>
