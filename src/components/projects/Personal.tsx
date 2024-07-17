@@ -1,13 +1,13 @@
 const Personal = () => {
     return (
         <>
-            <section className="relative flex flex-col-reverse lg:flex-row justify-center w-full lg:px-40 gap-5 bg-neutral-200 lg:py-10 pb-6 items-center">
-                <div className="lg:w-1/3 h-max lg:text-xl pb-6 lg:p-20 mt-4 text-center">
+            <section className="relative flex w-full flex-col-reverse items-center justify-center gap-5 bg-neutral-200 pb-6 lg:flex-row lg:px-40 lg:py-10">
+                <div className="mt-4 h-max pb-6 text-center lg:w-1/3 lg:p-20 lg:text-xl">
                     <p>
                         A showcase of my animation knowledge with Framer Motion
                         and a mix of JS and CSS using a shopping website
                     </p>
-                    <p className="text-blue-600 hover:underline mt-4">
+                    <p className="mt-4 text-blue-600 hover:underline">
                         <a
                             href="https://shopping-animation.vercel.app/"
                             target="_blank"
@@ -16,8 +16,8 @@ const Personal = () => {
                         </a>
                     </p>
                 </div>
-                <div className="lg:w-1/2 mt-10 flex flex-col items-center">
-                    <h3 className="text-center text-4xl mb-10 hover:underline text-blue-600">
+                <div className="mt-10 flex flex-col items-center lg:w-1/2">
+                    <h3 className="mb-10 text-center text-4xl text-blue-600 hover:underline">
                         <a
                             href="https://shopping-animation.vercel.app/"
                             target="_blank"
@@ -26,13 +26,18 @@ const Personal = () => {
                         </a>
                     </h3>
                     <div className="">
-                        <img src="shopping.png" />
+                        <a
+                            href="https://shopping-animation.vercel.app/"
+                            target="_blank"
+                        >
+                            <img src="shopping.png" />
+                        </a>
                     </div>
                 </div>
             </section>
-            <section className="relative flex flex-col-reverse lg:flex-row justify-center w-full lg:px-40 gap-5 lg:py-10 pb-6 items-center">
-                <div className="lg:w-1/2 mt-10 flex flex-col items-center">
-                    <h3 className="text-center text-4xl mb-10 w-max hover:underline text-blue-600">
+            <section className="relative flex w-full flex-col-reverse items-center justify-center gap-5 pb-6 lg:flex-row lg:px-40 lg:py-10">
+                <div className="mt-10 flex flex-col items-center lg:w-1/2">
+                    <h3 className="mb-10 w-max text-center text-4xl text-blue-600 hover:underline">
                         <a
                             href="https://excel-front-lovat.vercel.app/"
                             target="_blank"
@@ -41,10 +46,15 @@ const Personal = () => {
                         </a>
                     </h3>
                     <div className="">
-                        <img src="Excel.png" />
+                        <a
+                            href="https://excel-front-lovat.vercel.app/"
+                            target="_blank"
+                        >
+                            <img src="Excel.png" />
+                        </a>
                     </div>
                 </div>
-                <div className="lg:w-1/3 h-max lg:text-xl pb-6 lg:p-20 mt-4 text-center">
+                <div className="mt-4 h-max pb-6 text-center lg:w-1/3 lg:p-20 lg:text-xl">
                     <p>
                         A simple app that takes a dataset in csv or xlsx and
                         formats into groups, sorts them, and/or add extra
@@ -62,7 +72,7 @@ const Personal = () => {
                         </a>{" "}
                         for testing.
                     </p>
-                    <p className="text-blue-600 hover:underline mt-4">
+                    <p className="mt-4 text-blue-600 hover:underline">
                         <a
                             href="https://excel-front-lovat.vercel.app/"
                             target="_blank"

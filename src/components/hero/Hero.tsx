@@ -24,7 +24,7 @@ const Hero = () => {
 
     return (
         <section
-            className="hero-section flex w-full items-center justify-around bg-black pb-20 pt-10 text-white lg:flex-row lg:justify-around lg:px-80 lg:py-40"
+            className="hero-section flex w-full flex-col items-center bg-black px-10 pb-20 pt-10 text-white lg:flex-row lg:justify-around lg:px-96 lg:py-40"
             style={{ opacity }}
         >
             <div
@@ -32,14 +32,14 @@ const Hero = () => {
                 style={{ transform: `translateY(${transform}px)` }}
             >
                 <h1 className="text-center text-3xl lg:text-start lg:text-7xl">
-                    <span className="">Say hello to your future</span>
-                    <br />
-                    <span className="text-blue-300">web developer.</span>
+                    <span className="">Welcome.</span>
                 </h1>
-                <p className="lg:w-1/2 lg:text-2xl">
-                    My name is Ariel Martin Cohen. I am a full stack web
-                    developer with 1 year experience awaiting my next
-                    opportunity.
+                <p className="text-center lg:w-1/2 lg:text-start lg:text-2xl">
+                    My name is Ariel Martin Cohen. I am a{" "}
+                    <span className="text-blue-400">
+                        full stack web developer
+                    </span>{" "}
+                    based in Montreal, QC.
                 </p>
                 <div className="my-5 flex justify-center gap-3 pt-4 lg:justify-start">
                     <a

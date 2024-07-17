@@ -9,6 +9,7 @@ const Contact = () => {
     const [formData, setFormData] = useState({
         first_name: "",
         last_name: "",
+        subject: "",
         from_email: "",
         message: "",
     });
@@ -63,7 +64,7 @@ const Contact = () => {
     return (
         <>
             <div className="flex flex-grow flex-col items-center justify-center bg-gray-100">
-                <section className="pb-5 text-center">
+                <section className="px-5 pb-5 text-center lg:px-0">
                     <h3 className="col-span-3 text-2xl">Contact Me</h3>
                     <p>I'd love to hear from you!</p>
                     <p>
@@ -74,7 +75,7 @@ const Contact = () => {
                         >
                             ariel.m.cohen@proton.me
                         </a>{" "}
-                        or fill out the form which does the same
+                        or fill out the form which does the same.
                     </p>
                 </section>
                 <form
@@ -112,6 +113,21 @@ const Contact = () => {
                                 className={inputClass}
                             />
                         </div>
+                    </div>
+                    <div className={divClass}>
+                        <label className={labelClass} htmlFor="from_email">
+                            Subject:
+                        </label>
+                        <input
+                            disabled={isLoading}
+                            type="email"
+                            id="from_email"
+                            name="from_email"
+                            value={formData.subject}
+                            onChange={handleChange}
+                            required
+                            className={inputClass}
+                        />
                     </div>
                     <div className={divClass}>
                         <label className={labelClass} htmlFor="from_email">

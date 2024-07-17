@@ -11,8 +11,8 @@ const Professional = () => {
     return (
         <>
             <section className="relative flex w-full flex-col-reverse items-center justify-around gap-10 bg-neutral-200 pb-6 lg:flex-row lg:px-40 lg:py-10">
-                <div className="mt-4 h-max pb-6 text-center lg:w-1/3 lg:p-20 lg:text-xl">
-                    <p>
+                <div className="mt-4 h-max pb-6 text-center lg:w-1/2 lg:p-20 lg:text-xl">
+                    <p className="px-10 lg:px-0">
                         An easy to use trading app with a no-code strategy
                         creation for Entries and Exits. Includes a drag and drop
                         system for strategy creation, a chat bot to ask

@@ -18,7 +18,7 @@ function App() {
     return (
         <div className="flex min-h-screen w-full flex-col overflow-x-hidden">
             <Navbar />
-            <div className="mt-16 flex flex-grow flex-col">
+            <div className="flex flex-grow flex-col lg:mt-16">
                 <Routes>
                     {routes.map((route) => (
                         <Route
