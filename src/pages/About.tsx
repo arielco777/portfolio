@@ -1,5 +1,3 @@
-import { HashLink as Link } from "react-router-hash-link";
-
 const About = () => {
     return (
         <div className="flex flex-grow">
