@@ -10,7 +10,7 @@ import {
 const Professional = () => {
     return (
         <>
-            <section className="relative flex w-full flex-col-reverse items-center justify-around gap-10 bg-neutral-200 pb-6 lg:flex-row lg:px-40 lg:py-10">
+            <section className="relative flex w-full flex-col-reverse items-center justify-around gap-10 bg-neutral-200 px-5 pb-6 lg:flex-row lg:px-40 lg:pb-10">
                 <div className="mt-4 h-max pb-6 text-center lg:w-1/2 lg:p-20 lg:text-xl">
                     <p className="px-10 lg:px-0">
                         An easy to use trading app with a no-code strategy
@@ -76,7 +76,7 @@ const Professional = () => {
                     </div>
                 </div>
             </section>
-            <section className="gap- w-full items-center justify-around py-6 lg:flex lg:px-40 lg:py-10">
+            <section className="w-full items-center justify-around px-5 py-6 lg:flex lg:px-40 lg:pb-10 lg:pt-0">
                 <div className="flex flex-col items-center lg:mt-10 lg:w-1/2">
                     <h3 className="mb-10 text-center text-4xl text-blue-600 hover:underline">
                         <a href="http://www.hadaly.ca" target="_blank">

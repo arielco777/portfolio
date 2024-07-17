@@ -1,7 +1,7 @@
 const Personal = () => {
     return (
         <>
-            <section className="relative flex w-full flex-col-reverse items-center justify-center gap-5 bg-neutral-200 pb-6 lg:flex-row lg:px-40 lg:py-10">
+            <section className="relative flex w-full flex-col-reverse items-center justify-center gap-5 bg-neutral-200 px-10 pb-6 lg:flex-row lg:px-40 lg:pb-10">
                 <div className="mt-4 h-max pb-6 text-center lg:w-1/3 lg:p-20 lg:text-xl">
                     <p>
                         A showcase of my animation knowledge with Framer Motion
@@ -35,7 +35,7 @@ const Personal = () => {
                     </div>
                 </div>
             </section>
-            <section className="relative flex w-full flex-col-reverse items-center justify-center gap-5 pb-6 lg:flex-row lg:px-40 lg:py-10">
+            <section className="relative flex w-full flex-col items-center justify-center gap-5 px-10 pb-6 lg:flex-row lg:px-40 lg:pb-10">
                 <div className="mt-10 flex flex-col items-center lg:w-1/2">
                     <h3 className="mb-10 w-max text-center text-4xl text-blue-600 hover:underline">
                         <a

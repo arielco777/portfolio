@@ -55,7 +55,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <div id="work" className="invisible py-10"></div>
+            <div id="work" className="invisible py-3"></div>
             <div className="flex w-full items-end justify-center gap-2 px-4 md:px-0">
                 <button
                     className={`w-full whitespace-nowrap rounded-t-md p-2 text-center lg:w-max ${

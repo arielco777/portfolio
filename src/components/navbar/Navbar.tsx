@@ -50,12 +50,12 @@ const Navbar = () => {
                 {isOpen ? <Close /> : <MenuIcon />}
             </button>
             <ul
-                className={`${isOpen ? "h-[calc(100vh/2)] border-b" : "-mt-5 h-0"} flex w-full flex-col items-center justify-evenly divide-y overflow-hidden bg-black text-4xl transition-all lg:hidden`}
+                className={`${isOpen ? "h-screen" : "-mt-5 h-0"} flex w-full flex-col items-center justify-evenly divide-y overflow-hidden bg-black text-4xl transition-all duration-300 lg:hidden`}
             >
                 {listItems.map((item) => (
                     <div
                         key={item.to}
-                        className="flex w-1/2 flex-grow items-center justify-center"
+                        className="flex h-max w-1/2 flex-grow items-center justify-center"
                     >
                         <Item label={item.label} to={item.to} />
                     </div>

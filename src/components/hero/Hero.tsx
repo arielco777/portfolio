@@ -25,15 +25,15 @@ const Hero = () => {
     return (
         <section
             className="flex w-full flex-col items-center overflow-y-hidden bg-black px-10 pb-20 pt-10 text-white lg:flex-row lg:justify-around lg:px-96 lg:py-40"
-            style={{ opacity }}
+            style={{ opacity: window.innerWidth > 720 ? opacity : 1 }}
         >
             <div
-                className="h-scree flex transition-none"
+                className="flex flex-col justify-center transition-none lg:flex-row"
                 style={{ transform: `translateY(${transform}px)` }}
             >
-                <div className="top-0 flex flex-col items-start gap-2 text-left">
-                    <h1 className="text-center text-3xl lg:text-start lg:text-7xl">
-                        <span className="">Welcome.</span>
+                <div className="top-0 flex flex-col items-center gap-2 text-left lg:items-start">
+                    <h1 className="text-center text-7xl lg:text-start lg:text-7xl">
+                        <span className="">Welcome</span>
                     </h1>
                     <p className="text-center lg:w-1/2 lg:text-start lg:text-2xl">
                         My name is Ariel Martin Cohen. I am a{" "}
@@ -58,7 +58,7 @@ const Hero = () => {
                     </div>
                 </div>
                 <img
-                    className="flex h-80 rounded-full lg:w-80"
+                    className="flex rounded-full lg:h-80 lg:w-80"
                     src="selfie.png"
                 />
             </div>
