@@ -11,7 +11,7 @@ const About = () => {
                     </p>
                     <p></p>
                     <p>
-                        I am a full-stack developer profecient with React as
+                        I am a full-stack developer proffecient with React as
                         front and Java, Python, and Express in the back-end. I
                         have studies as a full stack web developer and a video
                         game developer but focus more non web development.
