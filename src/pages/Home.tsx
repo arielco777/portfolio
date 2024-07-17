@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Professional from "../components/projects/Professional";
 import Personal from "../components/projects/Personal";
-import Hero from "../components/Hero";
+import Hero from "../components/hero/Hero";
 
 const Home = () => {
     const [projectView, setProjectView] = useState<"personal" | "work">("work");
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="relative flex w-screen flex-col items-center" id="top">
             <Hero />
             <section id="technologies" className="w-full px-4 py-10">
                 <h2 className="pb-5 text-center text-2xl">Web Technologies</h2>

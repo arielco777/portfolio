@@ -66,6 +66,16 @@ const Contact = () => {
                 <section className="pb-5 text-center">
                     <h3 className="col-span-3 text-2xl">Contact Me</h3>
                     <p>I'd love to hear from you!</p>
+                    <p>
+                        You can email me directly at{" "}
+                        <a
+                            className="text-blue-600 hover:underline"
+                            href="mailto:ariel.m.cohen@proton.me"
+                        >
+                            ariel.m.cohen@proton.me
+                        </a>{" "}
+                        or fill out the form which does the same
+                    </p>
                 </section>
                 <form
                     onSubmit={handleSubmit}

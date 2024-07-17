@@ -29,7 +29,7 @@ function App() {
                     ))}
                 </Routes>
             </div>
-            <Analytics />
+            {process.env.NODE_ENV !== "development" && <Analytics />}
             <Footer />
         </div>
     );
