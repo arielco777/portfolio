@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./hero.css";
+import { HashLink as Link } from "react-router-hash-link";
 
 const Hero = () => {
     const [opacity, setOpacity] = useState(1);
@@ -9,8 +9,8 @@ const Hero = () => {
     const handleScroll = () => {
         const scrollY = window.scrollY;
         const maxScroll = 600;
-        const newOpacity = Math.max(1.1 - scrollY / maxScroll, 0);
-        const newTransform = Math.min(scrollY / 2, 300);
+        const newOpacity = Math.max(1.3 - scrollY / maxScroll, 0);
+        const newTransform = Math.min(scrollY / 2, maxScroll);
         setOpacity(newOpacity);
         setTransform(newTransform);
     };
@@ -43,12 +43,12 @@ const Hero = () => {
                         based in Montreal, QC.
                     </p>
                     <div className="my-5 flex justify-center gap-3 pt-4 lg:justify-start">
-                        <a
-                            href="#work"
+                        <Link
+                            to="#work"
                             className="rounded rounded-b-xl bg-blue-500 px-3 py-2 text-xl transition hover:bg-blue-400"
                         >
                             View Projects
-                        </a>
+                        </Link>
                         <Link
                             to="/contact"
                             className="rounded rounded-b-xl border-2 border-blue-500 px-3 py-2 text-xl transition hover:border-blue-400 hover:bg-gray-700"
