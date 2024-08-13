@@ -14,12 +14,17 @@ const About = () => {
                         I am a full-stack developer proffecient with React as
                         front and Java, Python, and Express in the back-end. I
                         have studies as a full stack web developer and a video
-                        game developer but focus more non web development.
+                        game developer but focus more on web development.
                     </p>
                     <p>
                         I have many personal projects and apps that I use on the
-                        daily that I will deploy for showcasing in the future,
-                        like a workout planner for example.
+                        daily that I will deploy for showcasing.
+                    </p>
+                    <p>
+                        I am an avid traveler having lived in Australia for 2
+                        years and in England for 1 year. Also love playing and
+                        building video games on the side. Cooking and learning
+                        all sorts of skills, from coding to crochet.
                     </p>
                 </div>
             </section>

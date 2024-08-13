@@ -3,6 +3,7 @@ import Professional from "../components/projects/Professional";
 import Personal from "../components/projects/Personal";
 import Hero from "../components/hero/Hero";
 import StackCard from "@/components/StackCard";
+import { projectList } from "@/components/projects/projectList";
 
 interface ItemListProp {
     title: string;
@@ -58,7 +59,7 @@ const Home = () => {
             </section>
             <div id="work" className="py-6"></div>
             <div className="invisible py-3"></div>
-            <div className="flex w-full items-end justify-center gap-2 px-4 md:px-0">
+            <div className="flex w-full items-end justify-center gap-2 border-b px-2 md:px-0">
                 <button
                     className={`w-full whitespace-nowrap rounded-t-md p-2 text-center lg:w-max ${
                         projectView == "work"
@@ -80,7 +81,21 @@ const Home = () => {
                     Personal Projects
                 </button>
             </div>
-            {projectView == "work" ? <Professional /> : <Personal />}
+            <section className="px-6 lg:px-0 lg:pb-20">
+                {projectView == "work" ? (
+                    <Professional
+                        projects={projectList.filter(
+                            (project) => project.where === "pro",
+                        )}
+                    />
+                ) : (
+                    <Personal
+                        projects={projectList.filter(
+                            (project) => project.where === "pers",
+                        )}
+                    />
+                )}
+            </section>
         </div>
     );
 };

@@ -20,11 +20,11 @@ function App() {
             <Navbar />
             <div className="flex flex-grow flex-col lg:mt-16">
                 <Routes>
-                    {routes.map((route) => (
+                    {routes.map((route, index) => (
                         <Route
                             element={route.element}
                             path={route.path}
-                            key={route.path}
+                            key={index}
                         />
                     ))}
                 </Routes>
