@@ -9,7 +9,7 @@ export const projectList: ProjectType[] = [
                 An easy to use trading app with a no-code strategy creation for
                 Entries and Exits. Includes a drag and drop system for strategy
                 creation, a chat bot to ask questions, a save system, and an
-                easy to use interface for beginners.
+                easy to use interface for beginners. This is a version as of September 2023.
             </p>
         ),
         images: ["tradeen_1.png", "tradeen_2.png", "tradeen_3.png"],
@@ -25,7 +25,7 @@ export const projectList: ProjectType[] = [
                 <b>Hadaly</b>'s main product is an automated risk detection app
                 to perfom due-diligence report for M&A's. It includes a file
                 system for the data room, team and task management, and
-                dashboards. (All information shown is for demo purposes)
+                dashboards. This is a version as of March 2024.
             </p>
         ),
         images: ["hadaly_1.png", "hadaly_2.png", "hadaly_3.png"],
