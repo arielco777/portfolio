@@ -3,10 +3,19 @@ import type { IconName } from "../components/Icon";
 
 export type AppCategory = "project" | "accessory" | "document" | "system";
 
+export type ProjectKind = "professional" | "personal";
+
 export type ProjectInfo = {
+    kind: ProjectKind;
     summary: string;
     stack: string[];
+    /** Shown in the status bar, e.g. a date range. */
     status?: string;
+    /** Where it was built, e.g. a company. */
+    org?: string;
+    /** Screenshot URLs (imported from src/assets/projects). */
+    images?: string[];
+    links?: { label: string; href: string }[];
 };
 
 export type AppProps = {
