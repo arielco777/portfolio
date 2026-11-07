@@ -1,6 +1,8 @@
 import { useState } from "react";
-import type { AppCategory } from "../../apps/types";
-import { PROJECT_FOLDERS } from "../../content/projects";
+import type { AppCategory, AppDef } from "../../apps/types";
+import { PROJECT_KINDS } from "../../content/projects";
+import { useLang } from "../../i18n/lang";
+import { useStrings } from "../../i18n/strings";
 import { useWindowManager } from "../../state/windowManager";
 import Icon, { type IconName } from "../Icon";
 
@@ -104,92 +106,57 @@ type Props = { onClose: () => void };
 
 const StartMenu = ({ onClose }: Props) => {
     const { apps, open } = useWindowManager();
+    const lang = useLang();
+    const t = useStrings().start;
+    const folders = useStrings().folders;
 
-    const appsIn = (category: AppCategory): MenuEntry[] =>
-        apps
-            .filter((a) => a.category === category)
-            .map((a) => ({
-                kind: "item",
-                label: a.title,
-                icon: a.icon,
-                onSelect: () => open(a.id),
-            }));
+    const item = (a: AppDef): MenuEntry => ({
+        kind: "item",
+        label: a.title[lang],
+        icon: a.icon,
+        onSelect: () => open(a.id),
+    });
+    const appsIn = (category: AppCategory): MenuEntry[] => apps.filter((a) => a.category === category).map(item);
 
     const entries: MenuEntry[] = [
         {
             kind: "item",
-            label: "Programs",
+            label: t.programs,
             icon: "folder",
             children: [
                 {
                     kind: "item",
-                    label: "Projects",
+                    label: t.projects,
                     icon: "folder",
-                    children: PROJECT_FOLDERS.map(
-                        (f): MenuEntry => ({
+                    children: PROJECT_KINDS.map(
+                        (kind): MenuEntry => ({
                             kind: "item",
-                            label: f.label,
+                            label: folders[kind],
                             icon: "folder",
-                            children: apps
-                                .filter((a) => a.project?.kind === f.kind)
-                                .map((a) => ({ kind: "item", label: a.title, icon: a.icon, onSelect: () => open(a.id) })),
+                            children: apps.filter((a) => a.project?.kind === kind).map(item),
                         }),
                     ),
                 },
-                {
-                    kind: "item",
-                    label: "Accessories",
-                    icon: "folder",
-                    children: appsIn("accessory"),
-                },
+                { kind: "item", label: t.accessories, icon: "folder", children: appsIn("accessory") },
             ],
         },
+        { kind: "item", label: t.documents, icon: "document", children: appsIn("document") },
         {
             kind: "item",
-            label: "Documents",
-            icon: "document",
-            children: appsIn("document"),
-        },
-        {
-            kind: "item",
-            label: "Settings",
+            label: t.settings,
             icon: "settings",
             children: [
-                {
-                    kind: "item",
-                    label: "Display Properties...",
-                    icon: "settings",
-                    onSelect: () => open("display"),
-                },
-                {
-                    kind: "item",
-                    label: "Control Panel",
-                    icon: "settings",
-                    disabled: true,
-                },
-                {
-                    kind: "item",
-                    label: "Taskbar & Start Menu...",
-                    icon: "settings",
-                    disabled: true,
-                },
+                { kind: "item", label: t.displayProperties, icon: "settings", onSelect: () => open("display") },
+                { kind: "item", label: t.regionalSettings, icon: "web", onSelect: () => open("regional") },
+                { kind: "item", label: t.controlPanel, icon: "settings", disabled: true },
+                { kind: "item", label: t.taskbar, icon: "settings", disabled: true },
             ],
         },
-        { kind: "item", label: "Find", icon: "find", disabled: true },
-        {
-            kind: "item",
-            label: "Help",
-            icon: "help",
-            onSelect: () => open("help"),
-        },
-        { kind: "item", label: "Run...", icon: "run", disabled: true },
+        { kind: "item", label: t.find, icon: "find", disabled: true },
+        { kind: "item", label: t.help, icon: "help", onSelect: () => open("help") },
+        { kind: "item", label: t.run, icon: "run", disabled: true },
         { kind: "separator" },
-        {
-            kind: "item",
-            label: "Shut Down...",
-            icon: "shutdown",
-            onSelect: () => open("shutdown"),
-        },
+        { kind: "item", label: t.shutDown, icon: "shutdown", onSelect: () => open("shutdown") },
     ];
 
     return (

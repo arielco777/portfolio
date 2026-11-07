@@ -5,6 +5,8 @@ import { useClickOutside } from "../../hooks/useClickOutside";
 import { useWindowManager } from "../../state/windowManager";
 import { QUICK_VIEW_HASH } from "../../state/route";
 import Icon from "../Icon";
+import { toggleLang, useLang } from "../../i18n/lang";
+import { useStrings } from "../../i18n/strings";
 import Clock from "./Clock";
 import StartMenu from "./StartMenu";
 
@@ -16,6 +18,8 @@ const Divider = () => (
 );
 
 const TaskBar = () => {
+    const lang = useLang();
+    const t = useStrings();
     const { windows, activeId, getApp, focus, minimize, open } =
         useWindowManager();
     const menuRef = useRef<HTMLDivElement | null>(null);
@@ -41,7 +45,7 @@ const TaskBar = () => {
             <button
                 ref={buttonRef}
                 type="button"
-                aria-label="Start"
+                aria-label={t.start.start}
                 aria-expanded={openMenu}
                 onClick={() => setOpenMenu((prev) => !prev)}
                 onPointerDown={() => setPressing(true)}
@@ -66,15 +70,15 @@ const TaskBar = () => {
             <div className="flex h-full shrink-0 items-center gap-0.5">
                 <a
                     href={QUICK_VIEW_HASH}
-                    title="Quick View résumé"
+                    title={t.taskbar.quickView}
                     className="flex h-full items-center gap-1 px-1 hover:bevel-raised active:bevel-pressed max-sm:px-2"
                 >
                     <Icon name="document" size={16} />
-                    <span className="sm:hidden">Résumé</span>
+                    <span className="sm:hidden">{t.taskbar.quickViewShort}</span>
                 </a>
                 <button
                     type="button"
-                    title="Projects"
+                    title={t.taskbar.projects}
                     onClick={() => open("projects")}
                     className="flex h-full items-center px-1 hover:bevel-raised active:bevel-pressed max-sm:px-2"
                 >
@@ -94,7 +98,7 @@ const TaskBar = () => {
                         <button
                             key={w.id}
                             type="button"
-                            title={app.title}
+                            title={app.title[lang]}
                             onClick={() =>
                                 active ? minimize(w.id) : focus(w.id)
                             }
@@ -105,7 +109,7 @@ const TaskBar = () => {
                             }`}
                         >
                             <Icon name={app.icon} size={16} />
-                            <span className="truncate">{app.title}</span>
+                            <span className="truncate">{app.title[lang]}</span>
                         </button>
                     );
                 })}
@@ -118,12 +122,22 @@ const TaskBar = () => {
             <div className="flex h-full shrink-0 items-center gap-1.5 pr-2.5 pl-1 bevel-thin">
                 <button
                     type="button"
-                    title="Display size"
-                    aria-label="Display size"
+                    title={t.taskbar.displaySize}
+                    aria-label={t.taskbar.displaySize}
                     onClick={() => open("display")}
                     className="flex items-center max-sm:hidden"
                 >
                     <Icon name="find" size={16} />
+                </button>
+                {/* Win98-style language indicator */}
+                <button
+                    type="button"
+                    title={t.taskbar.language}
+                    aria-label={t.taskbar.language}
+                    onClick={toggleLang}
+                    className="bg-classic-blue px-1 py-px text-[10px] font-bold leading-none text-white max-sm:px-1.5 max-sm:py-1 max-sm:text-[12px]"
+                >
+                    {t.langShort}
                 </button>
                 <Clock />
             </div>

@@ -2,18 +2,27 @@ import { useState, type ReactNode } from "react";
 import Icon, { type IconName } from "../components/Icon";
 import IconTile from "../components/IconTile";
 import { useWindowManager } from "../state/windowManager";
+import { useStrings, type Strings } from "../i18n/strings";
 
-/** Decorative "File Edit View Help" menu bar. */
-export const MenuBar = ({ items = ["File", "Edit", "View", "Help"] }: { items?: string[] }) => (
-    <div className="flex shrink-0 select-none gap-0.5 pb-0.5">
-        {items.map((item) => (
-            <span key={item} className="px-1.5 py-px">
-                <u>{item[0]}</u>
-                {item.slice(1)}
-            </span>
-        ))}
-    </div>
-);
+type MenuKey = keyof Strings["menu"];
+
+/** Decorative "File Edit View Help" menu bar (translated). */
+export const MenuBar = ({ items = ["file", "edit", "view", "help"] }: { items?: MenuKey[] }) => {
+    const t = useStrings();
+    return (
+        <div className="flex shrink-0 select-none gap-0.5 pb-0.5">
+            {items.map((key) => {
+                const item = t.menu[key];
+                return (
+                    <span key={key} className="px-1.5 py-px">
+                        <u>{item[0]}</u>
+                        {item.slice(1)}
+                    </span>
+                );
+            })}
+        </div>
+    );
+};
 
 /** White sunken content well that scrolls. */
 export const Well = ({ children, className = "" }: { children: ReactNode; className?: string }) => (
@@ -66,6 +75,7 @@ export const Explorer = ({
     onUp?: () => void;
 }) => {
     const { open } = useWindowManager();
+    const t = useStrings();
     const [selected, setSelected] = useState<string | null>(null);
 
     return (
@@ -76,19 +86,19 @@ export const Explorer = ({
                     <button
                         type="button"
                         onClick={onUp}
-                        title="Up one level"
+                        title={t.explorer.upTitle}
                         className="flex items-center gap-1 px-1.5 py-0.5 hover:bevel-raised active:bevel-pressed"
                     >
                         <Icon name="folder" size={16} />
-                        Up
+                        {t.explorer.up}
                     </button>
                 )}
-                <span className="pl-1 text-classic-darker">Address</span>
+                <span className="pl-1 text-classic-darker">{t.explorer.address}</span>
                 <div className="flex-1 truncate bg-white px-1 py-0.5 bevel-sunken">{path}</div>
             </div>
             <Well>
                 <div className="flex min-h-full flex-wrap content-start gap-2 p-2" onPointerDown={() => setSelected(null)}>
-                    {items.length === 0 && <p className="p-2 text-classic-dark">{emptyText ?? "This folder is empty."}</p>}
+                    {items.length === 0 && <p className="p-2 text-classic-dark">{emptyText ?? t.explorer.empty}</p>}
                     {items.map((item) => (
                         <IconTile
                             key={item.id}
@@ -103,7 +113,7 @@ export const Explorer = ({
                 </div>
             </Well>
             <StatusBar>
-                {items.length} object{items.length === 1 ? "" : "s"}
+                {t.explorer.objects(items.length)}
             </StatusBar>
         </div>
     );

@@ -7,7 +7,7 @@ export const NotepadView = ({ initialText = "" }: { initialText?: string }) => {
 
     return (
         <div className="flex min-h-0 flex-1 flex-col">
-            <MenuBar items={["File", "Edit", "Search", "Help"]} />
+            <MenuBar items={["file", "edit", "search", "help"]} />
             <textarea
                 value={text}
                 onChange={(e) => setText(e.target.value)}
