@@ -4,7 +4,7 @@ import ProjectWindow from "./ProjectWindow";
 import { PROJECTS } from "../content/projects";
 import Resume from "./Resume";
 import PdfViewer from "./PdfViewer";
-import { QUICK_VIEW_HASH } from "../state/route";
+import QuickView from "./QuickView";
 import DisplayProperties from "./DisplayProperties";
 import RegionalSettings from "./RegionalSettings";
 import { Contact, Help, MyComputer, ProjectsFolder, RecycleBin, ShutDown } from "./SystemApps";
@@ -18,10 +18,10 @@ export const APPS: AppDef[] = [
     { id: "about", title: { en: "About Me", fr: "À propos de moi" }, icon: "user", component: AboutMe, category: "document", desktop: true, defaultSize: { w: 440, h: 360 } },
     { id: "resume", title: { en: "Resume.txt - Notepad", fr: "CV.txt - Bloc-notes" }, icon: "notepad", component: Resume, category: "document", desktop: true, defaultSize: { w: 560, h: 420 } },
     { id: "cv", title: { en: "Ariel Cohen_CV.pdf", fr: "Ariel Cohen_CV.pdf" }, icon: "pdf", component: PdfViewer, category: "document", desktop: true, defaultSize: { w: 720, h: 640 } },
-    { id: "quick-view", title: { en: "Quick View", fr: "Aperçu rapide" }, icon: "web", href: QUICK_VIEW_HASH, category: "document", desktop: true },
+    { id: "quick-view", title: { en: "Quick View", fr: "Aperçu rapide" }, icon: "web", component: QuickView, category: "document", desktop: true, defaultSize: { w: 760, h: 620 } },
     { id: "contact", title: { en: "Contact", fr: "Contact" }, icon: "contact", component: Contact, category: "document", desktop: true, defaultSize: { w: 380, h: 260 } },
     { id: "notepad", title: { en: "Untitled - Notepad", fr: "Sans titre - Bloc-notes" }, icon: "notepad", component: Notepad, category: "accessory", singleton: false },
-    { id: "help", title: { en: "Help", fr: "Aide" }, icon: "help", component: Help, category: "system", defaultSize: { w: 400, h: 300 } },
+    { id: "help", title: { en: "Help", fr: "Aide" }, icon: "help", component: Help, category: "system", defaultSize: { w: 420, h: 340 } },
     {
         id: "display",
         title: { en: "Display Properties", fr: "Propriétés d'affichage" },

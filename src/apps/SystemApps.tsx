@@ -6,10 +6,10 @@ import type { ProjectKind } from "./types";
 import { contactLinks } from "../content/profile";
 import { restart } from "../components/Boot/bootState";
 import { useIsMobile } from "../hooks/useIsMobile";
-import { QUICK_VIEW_HASH } from "../state/route";
 import { useLang } from "../i18n/lang";
 import { useStrings } from "../i18n/strings";
 import { Button, Explorer, Well } from "./shared";
+import LanguageRadios from "../components/LanguageRadios";
 import type { AppProps } from "./types";
 
 export const MyComputer = () => {
@@ -120,6 +120,7 @@ export const ProjectsFolder = () => {
 };
 
 export const Contact = () => {
+    const { open } = useWindowManager();
     const lang = useLang();
     const t = useStrings();
     const links = contactLinks(lang);
@@ -131,9 +132,9 @@ export const Contact = () => {
                 <div className="flex flex-col gap-3 p-3 text-[12px] max-sm:text-[15px]">
                     <p>
                         {t.contact.intro}{" "}
-                        <a href={QUICK_VIEW_HASH} className="text-classic-blue underline">
+                        <button type="button" onClick={() => open("quick-view")} className="text-classic-blue underline">
                             {t.contact.quickViewLink}
-                        </a>
+                        </button>
                         .
                     </p>
                     {links.length > 0 ? (
@@ -199,8 +200,11 @@ export const Help = () => {
                             <b>{path}</b>
                             {after}
                         </li>
-                        <li>{t.help.language}</li>
                     </ul>
+                    <fieldset className="mt-1 border border-classic-dark px-3 pb-2 shadow-[1px_1px_#fff]">
+                        <legend className="px-1">{t.help.languageTitle}</legend>
+                        <LanguageRadios name="help-lang" />
+                    </fieldset>
                 </div>
             </Well>
         </div>

@@ -114,5 +114,10 @@
             overflow: visible;
             background: #fff;
         }
+
+        /* While the Quick View window is open, print only its résumé copy, not the desktop. */
+        html:has(.print-resume) #root {
+            display: none;
+        }
     }
 }

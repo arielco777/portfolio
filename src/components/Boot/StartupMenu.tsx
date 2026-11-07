@@ -95,7 +95,7 @@ const StartupMenu = ({ onChoose }: Props) => {
                             }}
                             className={lang === l ? "bg-neutral-300 px-1 text-black" : "px-1 hover:text-white"}
                         >
-                            [{lang === l ? "x" : " "}] {STRINGS[l].langName}
+                            ({lang === l ? "•" : " "}) {STRINGS[l].langName}
                         </button>
                     ))}
                 </p>

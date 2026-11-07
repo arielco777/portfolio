@@ -62,7 +62,7 @@ const en = {
             "Use the buttons in the top-right corner to minimize, maximize or close.",
         ],
         browse: ["Open ", "Start ▸ Programs ▸ Projects", " to browse my work."],
-        language: "Prefer French? Click EN next to the clock.",
+        languageTitle: "Language",
     },
     shutDown: {
         text: "Thanks for stopping by! Do you want to restart the portfolio?",
@@ -99,6 +99,7 @@ const en = {
             "For the full experience, use the desktop version. There you can drag, resize and stack windows like it's 1998.",
         taskbarStrong: "Don't see the taskbar",
         taskbarRest: " at the bottom of the screen? Refresh the page.",
+        language: "Language",
         ok: "OK",
     },
     boot: {
@@ -127,7 +128,7 @@ const en = {
         edition: (title: string) => `${title} Edition`,
     },
     quickView: {
-        back: "← Back to desktop",
+        language: "Language:",
         download: "Download PDF",
         print: "Print / Save as PDF",
         summary: "Summary",
@@ -211,7 +212,7 @@ const fr: Strings = {
             "Utilisez les boutons en haut à droite pour réduire, agrandir ou fermer.",
         ],
         browse: ["Ouvrez ", "Démarrer ▸ Programmes ▸ Projets", " pour voir mes réalisations."],
-        language: "Vous préférez l'anglais? Cliquez sur FR à côté de l'horloge.",
+        languageTitle: "Langue",
     },
     shutDown: {
         text: "Merci de votre visite! Voulez-vous redémarrer le portfolio?",
@@ -248,6 +249,7 @@ const fr: Strings = {
             "Pour profiter de l'expérience complète, utilisez la version ordinateur. Vous pourrez y déplacer, redimensionner et empiler les fenêtres comme en 1998.",
         taskbarStrong: "Vous ne voyez pas la barre des tâches",
         taskbarRest: " au bas de l'écran? Actualisez la page.",
+        language: "Langue",
         ok: "OK",
     },
     boot: {
@@ -276,7 +278,7 @@ const fr: Strings = {
         edition: (title: string) => `Édition ${title}`,
     },
     quickView: {
-        back: "← Retour au bureau",
+        language: "Langue :",
         download: "Télécharger le PDF",
         print: "Imprimer / Enregistrer en PDF",
         summary: "Profil",

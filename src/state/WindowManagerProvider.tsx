@@ -45,9 +45,7 @@ const WindowManagerProvider = ({ apps, startupApps = [], children }: Props) => {
         activeId: getActiveId(state.windows),
         open: (appId) => {
             const app = getApp(appId);
-            if (!app) return;
-            if (app.href) window.location.hash = app.href;
-            else dispatch({ type: "open", app, ...viewport() });
+            if (app) dispatch({ type: "open", app, ...viewport() });
         },
         close: (id) => dispatch({ type: "close", id }),
         focus: (id) => dispatch({ type: "focus", id }),
