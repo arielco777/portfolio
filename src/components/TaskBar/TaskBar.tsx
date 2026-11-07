@@ -3,7 +3,6 @@ import StartMenuImg from "../../assets/start-menu.png";
 import StartMenuClickedImg from "../../assets/start-menu-clicked.png";
 import { useClickOutside } from "../../hooks/useClickOutside";
 import { useWindowManager } from "../../state/windowManager";
-import { QUICK_VIEW_HASH } from "../../state/route";
 import Icon from "../Icon";
 import { toggleLang, useLang } from "../../i18n/lang";
 import { useStrings } from "../../i18n/strings";
@@ -68,14 +67,15 @@ const TaskBar = () => {
 
             {/* Quick Launch */}
             <div className="flex h-full shrink-0 items-center gap-0.5">
-                <a
-                    href={QUICK_VIEW_HASH}
+                <button
+                    type="button"
+                    onClick={() => open("quick-view")}
                     title={t.taskbar.quickView}
                     className="flex h-full items-center gap-1 px-1 hover:bevel-raised active:bevel-pressed max-sm:px-2"
                 >
                     <Icon name="document" size={16} />
                     <span className="sm:hidden">{t.taskbar.quickViewShort}</span>
-                </a>
+                </button>
                 <button
                     type="button"
                     title={t.taskbar.projects}

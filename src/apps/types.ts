@@ -28,10 +28,8 @@ export type AppDef = {
     id: string;
     title: L10n;
     icon: IconName;
-    /** Window contents. Omit for link-style entries that use `href` instead. */
-    component?: ComponentType<AppProps>;
-    /** Navigate to this URL/hash instead of opening a window (e.g. the Quick View page). */
-    href?: string;
+    /** Window contents. */
+    component: ComponentType<AppProps>;
     category: AppCategory;
     defaultSize?: { w: number; h: number };
     minSize?: { w: number; h: number };

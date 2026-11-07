@@ -4,7 +4,6 @@ import BootSequence from "./components/Boot/BootSequence";
 import { hasBooted, markBooted, prefersReducedMotion } from "./components/Boot/bootState";
 import Desktop from "./components/Desktop/Desktop";
 import MobileNotice from "./components/MobileNotice";
-import QuickView from "./components/QuickView/QuickView";
 import TaskBar from "./components/TaskBar/TaskBar";
 import HashSync from "./state/HashSync";
 import { routeFromHash, useHash } from "./state/route";
@@ -16,7 +15,7 @@ const isMobileNow = () => window.matchMedia(MOBILE_QUERY).matches;
 
 /** Windows to open on load: the deep-linked window if any, else the Help window (desktop only). */
 const startupApps = (route: string | null) => {
-    if (route && APPS.some((a) => a.id === route && !a.href)) return [route];
+    if (route && APPS.some((a) => a.id === route)) return [route];
     return isMobileNow() ? [] : ["help"];
 };
 
@@ -29,9 +28,7 @@ const App = () => {
     const [booting, setBooting] = useState(() => shouldBoot(route));
     const scale = useUiScale();
 
-    const quickView = route === "quick-view";
-
-    if (booting && !quickView) {
+    if (booting) {
         return (
             <BootSequence
                 onDone={() => {
@@ -45,18 +42,14 @@ const App = () => {
     return (
         <WindowManagerProvider apps={APPS} startupApps={startupApps(route)}>
             <HashSync />
-            {/* The desktop stays mounted under Quick View, so going back keeps your windows as they were. */}
             <div
-                className={`fixed inset-0 flex flex-col overflow-hidden max-sm:max-h-(--app-h) ${quickView ? "print:hidden" : ""}`}
+                className="fixed inset-0 flex flex-col overflow-hidden max-sm:max-h-(--app-h)"
                 style={{ zoom: scale }}
-                aria-hidden={quickView || undefined}
-                inert={quickView}
             >
                 <Desktop />
                 <TaskBar />
                 <MobileNotice />
             </div>
-            {quickView && <QuickView />}
         </WindowManagerProvider>
     );
 };

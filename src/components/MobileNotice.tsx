@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "../apps/shared";
 import { useIsMobile } from "../hooks/useIsMobile";
 import Icon from "./Icon";
+import LanguageRadios from "./LanguageRadios";
 import { useStrings } from "../i18n/strings";
 
 /** Win98-style message box shown on every page load on phones: desktop tip + taskbar refresh hint. */
@@ -35,6 +36,10 @@ const MobileNotice = () => {
                             <b>{t.taskbarStrong}</b>
                             {t.taskbarRest}
                         </p>
+                        <fieldset className="mt-1 border border-classic-dark px-3 pb-2 shadow-[1px_1px_#fff]">
+                            <legend className="px-1">{t.language}</legend>
+                            <LanguageRadios name="mobile-notice-lang" />
+                        </fieldset>
                     </div>
                 </div>
                 <div className="flex justify-center pb-4">
