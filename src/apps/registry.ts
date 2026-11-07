@@ -51,7 +51,7 @@ export const APPS: AppDef[] = [
             component: ProjectWindow,
             category: "project",
             project,
-            defaultSize: { w: 520, h: 380 },
+            defaultSize: { w: 640, h: 580 },
         }),
     ),
 ];

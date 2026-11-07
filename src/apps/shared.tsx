@@ -1,5 +1,5 @@
 import { useState, type ReactNode } from "react";
-import type { IconName } from "../components/Icon";
+import Icon, { type IconName } from "../components/Icon";
 import IconTile from "../components/IconTile";
 import { useWindowManager } from "../state/windowManager";
 
@@ -50,10 +50,21 @@ export const Button = ({
     </button>
 );
 
-export type ExplorerItem = { id: string; label: string; icon: IconName; appId?: string };
+export type ExplorerItem = { id: string; label: string; icon: IconName; appId?: string; onOpen?: () => void };
 
 /** An Explorer-style folder window: address bar, icon grid, status bar. */
-export const Explorer = ({ path, items, emptyText }: { path: string; items: ExplorerItem[]; emptyText?: string }) => {
+export const Explorer = ({
+    path,
+    items,
+    emptyText,
+    onUp,
+}: {
+    path: string;
+    items: ExplorerItem[];
+    emptyText?: string;
+    /** Shows an "Up" button that goes to the parent folder. */
+    onUp?: () => void;
+}) => {
     const { open } = useWindowManager();
     const [selected, setSelected] = useState<string | null>(null);
 
@@ -61,6 +72,17 @@ export const Explorer = ({ path, items, emptyText }: { path: string; items: Expl
         <div className="flex min-h-0 flex-1 flex-col">
             <MenuBar />
             <div className="mb-0.5 flex shrink-0 items-center gap-1 border-t border-t-classic-dark pt-0.5 shadow-[inset_0_1px_#fff]">
+                {onUp && (
+                    <button
+                        type="button"
+                        onClick={onUp}
+                        title="Up one level"
+                        className="flex items-center gap-1 px-1.5 py-0.5 hover:bevel-raised active:bevel-pressed"
+                    >
+                        <Icon name="folder" size={16} />
+                        Up
+                    </button>
+                )}
                 <span className="pl-1 text-classic-darker">Address</span>
                 <div className="flex-1 truncate bg-white px-1 py-0.5 bevel-sunken">{path}</div>
             </div>
@@ -75,7 +97,7 @@ export const Explorer = ({ path, items, emptyText }: { path: string; items: Expl
                             label={item.label}
                             selected={selected === item.id}
                             onSelect={() => setSelected(item.id)}
-                            onOpen={item.appId ? () => open(item.appId!) : undefined}
+                            onOpen={item.onOpen ?? (item.appId ? () => open(item.appId!) : undefined)}
                         />
                     ))}
                 </div>

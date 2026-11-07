@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { AppCategory } from "../../apps/types";
+import { PROJECT_FOLDERS } from "../../content/projects";
 import { useWindowManager } from "../../state/windowManager";
 import Icon, { type IconName } from "../Icon";
 
@@ -124,7 +125,16 @@ const StartMenu = ({ onClose }: Props) => {
                     kind: "item",
                     label: "Projects",
                     icon: "folder",
-                    children: appsIn("project"),
+                    children: PROJECT_FOLDERS.map(
+                        (f): MenuEntry => ({
+                            kind: "item",
+                            label: f.label,
+                            icon: "folder",
+                            children: apps
+                                .filter((a) => a.project?.kind === f.kind)
+                                .map((a) => ({ kind: "item", label: a.title, icon: a.icon, onSelect: () => open(a.id) })),
+                        }),
+                    ),
                 },
                 {
                     kind: "item",
