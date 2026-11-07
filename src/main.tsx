@@ -10,7 +10,7 @@ trackViewportHeight()
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <App />
-    {/* Vercel Web Analytics: no-op locally, active once deployed on Vercel. */}
+    {/* Vercel Web Analytics: only logs to the console in dev, sends data once deployed on Vercel. */}
     <Analytics />
   </StrictMode>,
 )
