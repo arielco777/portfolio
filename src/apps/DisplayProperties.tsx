@@ -11,6 +11,7 @@ import {
     useUiScale,
 } from "../state/uiScale";
 import Icon from "../components/Icon";
+import { useStrings } from "../i18n/strings";
 import { Button } from "./shared";
 import type { AppProps } from "./types";
 
@@ -18,6 +19,7 @@ const pct = (n: number) => `${Math.round(n * 100)}%`;
 
 /** Win98-style "Display Properties" with a UI scale slider (desktop only). */
 const DisplayProperties = ({ windowId }: AppProps) => {
+    const t = useStrings();
     const { close } = useWindowManager();
     const isMobile = useIsMobile();
     const setting = useScaleSetting();
@@ -52,21 +54,21 @@ const DisplayProperties = ({ windowId }: AppProps) => {
     }, []);
 
     if (isMobile) {
-        return <p className="p-4">Display scaling is only available on the desktop version.</p>;
+        return <p className="p-4">{t.display.mobileOnly}</p>;
     }
 
     return (
         <div className="flex flex-1 flex-col gap-3 p-2">
             <fieldset className="flex flex-col gap-3 border border-classic-dark p-3 shadow-[1px_1px_#fff]">
-                <legend className="px-1">Screen area</legend>
+                <legend className="px-1">{t.display.screenArea}</legend>
 
                 <div className="flex items-center gap-3">
                     <Icon name="computer" size={32} />
-                    <p>Make everything bigger on high-resolution screens (text, icons and windows).</p>
+                    <p>{t.display.intro}</p>
                 </div>
 
                 <div className="flex items-center gap-2">
-                    <span>Less</span>
+                    <span>{t.display.less}</span>
                     <input
                         type="range"
                         min={SCALE_MIN}
@@ -75,14 +77,14 @@ const DisplayProperties = ({ windowId }: AppProps) => {
                         value={shown}
                         ref={sliderRef}
                         onChange={(e) => setDraft(Number(e.target.value))}
-                        aria-label="UI scale"
+                        aria-label={t.display.scaleLabel}
                         className="flex-1 accent-classic-blue"
                     />
-                    <span>More</span>
+                    <span>{t.display.more}</span>
                 </div>
                 <p className="text-center">
                     <b>{pct(shown)}</b>
-                    {draft !== null && draft !== scale ? " (release to apply)" : isAuto && " (automatic)"}
+                    {draft !== null && draft !== scale ? ` ${t.display.release}` : isAuto && ` ${t.display.auto}`}
                 </p>
 
                 <label className="flex items-center gap-2">
@@ -91,14 +93,14 @@ const DisplayProperties = ({ windowId }: AppProps) => {
                         checked={isAuto}
                         onChange={(e) => setScaleSetting(e.target.checked ? "auto" : scale)}
                     />
-                    Automatic, based on screen width (currently {pct(autoScale())})
+                    {t.display.autoLabel(pct(autoScale()))}
                 </label>
             </fieldset>
 
             <div className="mt-auto flex justify-end gap-2">
-                <Button onClick={() => setScaleSetting("auto")}>Reset</Button>
+                <Button onClick={() => setScaleSetting("auto")}>{t.display.reset}</Button>
                 <Button autoFocus onClick={() => close(windowId)}>
-                    OK
+                    {t.display.ok}
                 </Button>
             </div>
         </div>

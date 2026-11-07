@@ -1,5 +1,6 @@
 import type { ComponentType } from "react";
 import type { IconName } from "../components/Icon";
+import type { L10n } from "../i18n/lang";
 
 export type AppCategory = "project" | "accessory" | "document" | "system";
 
@@ -7,15 +8,15 @@ export type ProjectKind = "professional" | "personal";
 
 export type ProjectInfo = {
     kind: ProjectKind;
-    summary: string;
+    summary: L10n;
     stack: string[];
     /** Shown in the status bar, e.g. a date range. */
-    status?: string;
+    status?: L10n;
     /** Where it was built, e.g. a company. */
     org?: string;
     /** Screenshot URLs (imported from src/assets/projects). */
     images?: string[];
-    links?: { label: string; href: string }[];
+    links?: { label: L10n; href: string }[];
 };
 
 export type AppProps = {
@@ -25,7 +26,7 @@ export type AppProps = {
 
 export type AppDef = {
     id: string;
-    title: string;
+    title: L10n;
     icon: IconName;
     /** Window contents. Omit for link-style entries that use `href` instead. */
     component?: ComponentType<AppProps>;

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useIsMobile } from "../../hooks/useIsMobile";
+import { useLang } from "../../i18n/lang";
 import { useWindowManager } from "../../state/windowManager";
 import IconTile from "../IconTile";
 import Window from "../Window/Window";
@@ -10,6 +11,7 @@ const Desktop = () => {
     const [selected, setSelected] = useState<string | null>(null);
 
     const isMobile = useIsMobile();
+    const lang = useLang();
     const icons = apps.filter((a) => a.desktop && !(isMobile && a.hideOnMobile));
 
     return (
@@ -20,7 +22,7 @@ const Desktop = () => {
                             key={a.id}
                             variant="desktop"
                             icon={a.icon}
-                            label={a.title}
+                            label={a.title[lang]}
                             selected={selected === a.id}
                             onSelect={() => setSelected(a.id)}
                             onOpen={() => open(a.id)}

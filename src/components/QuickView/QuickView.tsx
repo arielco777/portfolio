@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import { PROJECTS } from "../../content/projects";
-import { contactLinks, PROFILE } from "../../content/profile";
+import { contactLinks, useProfile } from "../../content/profile";
+import { LANGS, setLang, useLang } from "../../i18n/lang";
+import { STRINGS, useStrings } from "../../i18n/strings";
 
 const Section = ({ title, children }: { title: string; children: ReactNode }) => (
     <section className="mt-8 print:mt-5">
@@ -16,24 +18,42 @@ const btn =
 
 /** Plain, scrollable, printable one-page résumé for people who just want the facts. */
 const QuickView = () => {
-    const links = contactLinks();
-    const projects = PROJECTS.filter((p) => p.status !== "Placeholder");
+    const lang = useLang();
+    const t = useStrings().quickView;
+    const PROFILE = useProfile();
+    const links = contactLinks(lang);
+    const projects = PROJECTS;
 
     return (
         <div className="fixed inset-x-0 top-0 z-[300000] h-(--app-h) overflow-y-auto bg-neutral-100 print:static font-sans text-[16px] text-neutral-900 antialiased print:h-auto print:overflow-visible print:bg-white">
             <div className="sticky top-0 z-10 border-b border-neutral-200 bg-white/95 backdrop-blur print:hidden">
                 <div className="mx-auto flex max-w-3xl flex-wrap items-center gap-2 px-4 py-2">
                     <a href="#/" className={btn}>
-                        ← Back to desktop
+                        {t.back}
                     </a>
                     <span className="flex-1" />
+                    {/* EN | FR */}
+                    <div className="flex overflow-hidden rounded border border-neutral-300 text-sm font-medium">
+                        {LANGS.map((l) => (
+                            <button
+                                key={l}
+                                type="button"
+                                onClick={() => setLang(l)}
+                                aria-pressed={lang === l}
+                                title={STRINGS[l].langName}
+                                className={`px-2.5 py-2 ${lang === l ? "bg-teal-700 text-white" : "bg-white text-neutral-700 hover:bg-neutral-100"}`}
+                            >
+                                {STRINGS[l].langShort}
+                            </button>
+                        ))}
+                    </div>
                     {PROFILE.resumePdf && (
                         <a href={PROFILE.resumePdf} download={PROFILE.resumePdfName} className={btn}>
-                            Download PDF
+                            {t.download}
                         </a>
                     )}
                     <button type="button" onClick={() => window.print()} className={btn}>
-                        Print / Save as PDF
+                        {t.print}
                     </button>
                 </div>
             </div>
@@ -66,11 +86,11 @@ const QuickView = () => {
                     </div>
                 </header>
 
-                <Section title="Summary">
+                <Section title={t.summary}>
                     <p>{PROFILE.summary}</p>
                 </Section>
 
-                <Section title="Experience">
+                <Section title={t.experience}>
                     <div className="flex flex-col gap-5">
                         {PROFILE.experience.map((e) => (
                             <div key={e.role}>
@@ -87,7 +107,7 @@ const QuickView = () => {
                                     ))}
                                 </ul>
                                 <p className="mt-1 text-sm text-neutral-600">
-                                    <span className="font-medium">Tech:</span> {e.stack.join(" · ")}
+                                    <span className="font-medium">{t.tech}</span> {e.stack.join(" · ")}
                                 </p>
                             </div>
                         ))}
@@ -95,15 +115,17 @@ const QuickView = () => {
                 </Section>
 
                 {projects.length > 0 && (
-                    <Section title="Projects">
+                    <Section title={t.projects}>
                         <div className="flex flex-col gap-4">
                             {projects.map((p) => (
                                 <div key={p.id}>
                                     <h3 className="font-semibold">
-                                        {p.title}
-                                        {p.status && <span className="ml-2 text-sm font-normal text-neutral-500">{p.status}</span>}
+                                        {p.title[lang]}
+                                        {p.status && (
+                                            <span className="ml-2 text-sm font-normal text-neutral-500">{p.status[lang]}</span>
+                                        )}
                                     </h3>
-                                    <p>{p.summary}</p>
+                                    <p>{p.summary[lang]}</p>
                                     {p.stack.length > 0 && <p className="mt-1 text-sm text-neutral-600">{p.stack.join(" · ")}</p>}
                                 </div>
                             ))}
@@ -111,7 +133,7 @@ const QuickView = () => {
                     </Section>
                 )}
 
-                <Section title="Skills">
+                <Section title={t.skills}>
                     <div className="flex flex-col gap-2">
                         {PROFILE.skills.map((g) => (
                             <div key={g.group} className="flex flex-col gap-1 sm:flex-row sm:gap-3">
@@ -131,7 +153,7 @@ const QuickView = () => {
                     </div>
                 </Section>
 
-                <Section title="Education">
+                <Section title={t.education}>
                     <div className="flex flex-col gap-4">
                         {PROFILE.education.map((e) => (
                             <div key={e.program}>
@@ -146,7 +168,7 @@ const QuickView = () => {
                     </div>
                 </Section>
 
-                <Section title="Languages">
+                <Section title={t.languages}>
                     <p>{PROFILE.languages.join(" · ")}</p>
                 </Section>
             </main>

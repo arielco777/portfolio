@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Button } from "../apps/shared";
 import { useIsMobile } from "../hooks/useIsMobile";
 import Icon from "./Icon";
+import { useStrings } from "../i18n/strings";
 
 /** Win98-style message box shown on every page load on phones: desktop tip + taskbar refresh hint. */
 const MobileNotice = () => {
     const isMobile = useIsMobile();
+    const t = useStrings().mobileNotice;
     const [open, setOpen] = useState(true);
 
     if (!isMobile || !open) return null;
@@ -23,25 +25,21 @@ const MobileNotice = () => {
                     id="mobile-notice-title"
                     className="flex h-8 items-center bg-linear-to-r from-title-from to-title-to px-2 font-bold text-white"
                 >
-                    Tip
+                    {t.title}
                 </div>
                 <div className="flex items-start gap-3 p-4">
                     <Icon name="computer" size={32} />
                     <div className="flex flex-col gap-2">
+                        <p>{t.desktop}</p>
                         <p>
-                            For the full experience, use the desktop version.
-                            There you can drag, resize and stack windows like
-                            it's 1998.
-                        </p>
-                        <p>
-                            <b>Don't see the taskbar</b> at the bottom of the
-                            screen? Refresh the page.
+                            <b>{t.taskbarStrong}</b>
+                            {t.taskbarRest}
                         </p>
                     </div>
                 </div>
                 <div className="flex justify-center pb-4">
                     <Button autoFocus onClick={dismiss}>
-                        OK
+                        {t.ok}
                     </Button>
                 </div>
             </div>

@@ -1,6 +1,9 @@
 import { useRef, type PointerEvent as ReactPointerEvent } from "react";
 import type { AppDef } from "../../apps/types";
 import { useIsMobile } from "../../hooks/useIsMobile";
+import { useStrings } from "../../i18n/strings";
+import { useLang } from "../../i18n/lang";
+import { useUiScale } from "../../state/uiScale";
 import {
     useWindowManager,
     type Rect,
@@ -13,6 +16,8 @@ type Mode = "move" | "n" | "s" | "e" | "w" | "ne" | "nw" | "se" | "sw";
 
 type Interaction = {
     mode: Mode;
+    /** UI zoom at drag start: pointer deltas are screen px, window rects are zoomed CSS px. */
+    scale: number;
     startX: number;
     startY: number;
     rect: Rect;
@@ -69,6 +74,10 @@ const Window = ({ win, app, active }: Props) => {
     const { focus, close, minimize, toggleMaximize, setRect } =
         useWindowManager();
     const isMobile = useIsMobile();
+    const scale = useUiScale();
+    const lang = useLang();
+    const t = useStrings();
+    const title = app.title[lang];
     const frameRef = useRef<HTMLDivElement>(null);
     const interaction = useRef<Interaction | null>(null);
 
@@ -85,12 +94,14 @@ const Window = ({ win, app, active }: Props) => {
         const parent = frameRef.current?.parentElement;
         if (!parent) return;
         e.currentTarget.setPointerCapture(e.pointerId);
+        const box = parent.getBoundingClientRect();
         interaction.current = {
             mode,
+            scale,
             startX: e.clientX,
             startY: e.clientY,
             rect: win.rect,
-            bounds: { w: parent.clientWidth, h: parent.clientHeight },
+            bounds: { w: box.width / scale, h: box.height / scale },
         };
     };
 
@@ -99,7 +110,7 @@ const Window = ({ win, app, active }: Props) => {
         if (!s) return;
         setRect(
             win.id,
-            computeRect(s, e.clientX - s.startX, e.clientY - s.startY, min),
+            computeRect(s, (e.clientX - s.startX) / s.scale, (e.clientY - s.startY) / s.scale, min),
         );
     };
 
@@ -115,7 +126,7 @@ const Window = ({ win, app, active }: Props) => {
         <div
             ref={frameRef}
             role="dialog"
-            aria-label={app.title}
+            aria-label={title}
             onPointerDownCapture={() => focus(win.id)}
             className={`absolute flex flex-col bg-classic-grey bevel-raised p-0.75 ${win.minimized ? "hidden" : ""}`}
             style={
@@ -146,15 +157,15 @@ const Window = ({ win, app, active }: Props) => {
                         >
                             <path d="M6 0L0 5l6 5z" />
                         </svg>
-                        Back
+                        {t.window.back}
                     </button>
                     <Icon name={app.icon} size={20} />
                     <span className="flex-1 truncate text-[15px] font-bold">
-                        {app.title}
+                        {title}
                     </span>
                     <button
                         type="button"
-                        aria-label="Close"
+                        aria-label={t.window.close}
                         onClick={() => close(win.id)}
                         className="flex size-8 items-center justify-center bg-classic-grey bevel-raised active:bevel-pressed"
                     >
@@ -184,23 +195,23 @@ const Window = ({ win, app, active }: Props) => {
                 >
                     <Icon name={app.icon} size={16} />
                     <span className="flex-1 truncate font-bold">
-                        {app.title}
+                        {title}
                     </span>
                     <TitleButton
                         kind="minimize"
-                        label="Minimize"
+                        label={t.window.minimize}
                         onClick={() => minimize(win.id)}
                     />
                     {canMaximize && (
                         <TitleButton
                             kind={maximized ? "restore" : "maximize"}
-                            label={maximized ? "Restore" : "Maximize"}
+                            label={maximized ? t.window.restore : t.window.maximize}
                             onClick={() => toggleMaximize(win.id)}
                         />
                     )}
                     <TitleButton
                         kind="close"
-                        label="Close"
+                        label={t.window.close}
                         className="ml-0.5"
                         onClick={() => close(win.id)}
                     />
