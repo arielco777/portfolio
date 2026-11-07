@@ -1,7 +1,118 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-html {
-    scroll-behavior: smooth;
+@theme {
+    --color-classic-grey: #d4d0c8;
+    --color-classic-bg: #008080;
+    --color-classic-blue: #000080;
+    --color-classic-dark: #808080;
+    --color-classic-darker: #404040;
+    --color-classic-light: #ffffff;
+    --color-title-from: #000080;
+    --color-title-to: #1084d0;
+    --color-title-inactive-from: #808080;
+    --color-title-inactive-to: #b5b5b5;
+    --shadow-classic: 2px 2px 0 rgb(0 0 0 / 0.5);
+    --font-classic: Tahoma, "MS Sans Serif", "Microsoft Sans Serif", "Segoe UI", Geneva, sans-serif;
+}
+
+/* Win98 3D borders, built from stacked inset box-shadows. */
+@utility bevel-raised {
+    box-shadow:
+        inset -1px -1px #0a0a0a,
+        inset 1px 1px #ffffff,
+        inset -2px -2px #808080,
+        inset 2px 2px #dfdfdf;
+}
+
+@utility bevel-pressed {
+    box-shadow:
+        inset -1px -1px #ffffff,
+        inset 1px 1px #0a0a0a,
+        inset -2px -2px #dfdfdf,
+        inset 2px 2px #808080;
+}
+
+/* Text fields, list views, content wells. */
+@utility bevel-sunken {
+    box-shadow:
+        inset -1px -1px #ffffff,
+        inset 1px 1px #808080,
+        inset -2px -2px #dfdfdf,
+        inset 2px 2px #0a0a0a;
+}
+
+/* Thin 1px sunken border (system tray, status bar panels). */
+@utility bevel-thin {
+    box-shadow:
+        inset -1px -1px #ffffff,
+        inset 1px 1px #808080;
+}
+
+/* Checkered background used by an active (pressed) taskbar button. */
+@utility bg-checker {
+    background-color: #ffffff;
+    background-image:
+        linear-gradient(45deg, var(--color-classic-grey) 25%, transparent 25%, transparent 75%, var(--color-classic-grey) 75%),
+        linear-gradient(45deg, var(--color-classic-grey) 25%, transparent 25%, transparent 75%, var(--color-classic-grey) 75%);
+    background-size: 2px 2px;
+    background-position: 0 0, 1px 1px;
+}
+
+/* Scrolling colour bar on the boot splash. */
+@keyframes boot-bar {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
+
+@layer base {
+    /* Visible viewport height; overwritten with an exact pixel value by src/viewportHeight.ts. */
+    :root {
+        --app-h: 100vh;
+    }
+
+    @supports (height: 100dvh) {
+        :root {
+            --app-h: 100dvh;
+        }
+    }
+
+    html,
+    body,
+    #root {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    body {
+        font-family: var(--font-classic);
+        font-size: 11px;
+        background: var(--color-classic-bg);
+        color: #000;
+        -webkit-font-smoothing: none;
+    }
+
+    button {
+        cursor: default;
+    }
+
+    /* Authentic 11px text is unreadable on phones. */
+    @media (max-width: 639px) {
+        body {
+            font-size: 14px;
+        }
+    }
+
+    @media print {
+        html,
+        body,
+        #root {
+            height: auto;
+            overflow: visible;
+            background: #fff;
+        }
+    }
 }
